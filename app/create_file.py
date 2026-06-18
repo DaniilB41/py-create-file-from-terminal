@@ -9,11 +9,14 @@ def create_file(args=None) -> None:
     directory = []
     file_name = ""
     for index, element in enumerate(args):
-        if element == "-f" and index + 1 < len(args) and not args[index + 1].startswith("-"):
+        if (element == "-f"
+                and index + 1 < len(args)
+                and not args[index + 1].startswith("-")):
             file_name = args[index + 1]
         if element == "-d":
             next_index = index + 1
-            while next_index < len(args) and not args[next_index].startswith("-"):
+            while (next_index < len(args)
+                   and not args[next_index].startswith("-")):
                 directory.append(args[next_index])
                 next_index += 1
     if directory:
