@@ -33,7 +33,7 @@ def create_file(args: tuple | None = None) -> None:
         file.write(first_line + "\n")
         counter = 1
         while True:
-            line = input("Enter content line:")
+            line = input("Enter content line: ")
             if line == "stop":
                 break
             file.write(f"{counter} {line}\n")
