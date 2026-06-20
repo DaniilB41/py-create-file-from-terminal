@@ -6,6 +6,8 @@ from datetime import datetime
 def create_file(args=None) -> None:
     if args is None:
         args = sys.argv[1:]
+    if not args:
+        return
     directory = []
     file_name = ""
     for index, element in enumerate(args):
@@ -26,10 +28,12 @@ def create_file(args=None) -> None:
     full_path = os.path.join(*directory, file_name)
     first_line = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(full_path, "a") as sours_file:
+        if os.path.exists(full_path):
+            sours_file.write("\n")
         sours_file.write(first_line + "\n")
         counter = 1
         while True:
-            line = input("Enter content line: ")
+            line = input()
             if line == "stop":
                 break
             sours_file.write(f"{counter} {line}\n")
