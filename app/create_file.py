@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 
-def create_file(args: tuple) -> None:
+def create_file(args: tuple | None = None) -> None:
     if args is None:
         args = sys.argv[1:]
     if not args:
