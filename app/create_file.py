@@ -27,16 +27,16 @@ def create_file(*args : None) -> None:
         return
     full_path = os.path.join(*directory, file_name)
     first_line = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open(full_path, "a") as sours_file:
-        if os.path.exists(full_path):
-            sours_file.write("\n")
-        sours_file.write(first_line + "\n")
+    with open(full_path, "a") as file:
+        if os.path.exists(full_path) and os.path.getsize(full_path) > 0:
+            file.write("\n")
+        file.write(first_line + "\n")
         counter = 1
         while True:
-            line = input()
+            line = input("Enter content line:")
             if line == "stop":
                 break
-            sours_file.write(f"{counter} {line}\n")
+            file.write(f"{counter} {line}\n")
             counter += 1
 
 
